@@ -3,15 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux'
-import rootReducer from './Store/Reducers/RootReducer'
+import { createStore, combineReducers, compose } from 'redux'
 import {Provider} from 'react-redux'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+import fbConfig from './config/fbConfig'
+import rootReducer from './Store/Reducers/RootReducer'
+import { createFirestoreInstance } from 'redux-firestore'
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
-const store = createStore(rootReducer)
+const initialState = {}
+const store = createStore(rootReducer, initialState)
+
+const rrfProps = {
+  firebase,
+  config: fbConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance // <- needed if using firestore
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}><App /></Provider>
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

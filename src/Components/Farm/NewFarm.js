@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import {createFarm} from '../../Store/Actions/FarmActions'
 
 class NewFarm extends Component {
     state = {
@@ -18,7 +20,7 @@ class NewFarm extends Component {
     handleSubmit = (e) =>
     {
         e.preventDefault();
-        console.log(this.state);
+        this.props.createFarm(this.state)
     }
 
     render() {
@@ -57,4 +59,10 @@ class NewFarm extends Component {
     }
 }
 
-export default NewFarm
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createFarm: (farm) => dispatch(createFarm(farm))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NewFarm)

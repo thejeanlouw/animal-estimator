@@ -1,14 +1,16 @@
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
+import SignOut from '../Auth/SignOut'
 
-const SignedInLinks = () =>
+const SignedInLinks = (props) =>
 {
+    debugger;
     return(
         <ul className="right">
             <li><NavLink to='/newfarm'>New Farm</NavLink></li>
             <li><NavLink to='/newcamp'>New Camp</NavLink></li>
             <li><NavLink to='/newanimal'>New Animal</NavLink></li>
-            <li><NavLink to='/' className="btn btn-floating pink lighten-1">Log Out</NavLink></li>
+            <li><SignOut auth={props.auth}/></li>
         </ul>
     )
 }
