@@ -55,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center'
       },
       icon: {
-        width: 150,
-        height: 150,
+        width: 100,
+        height: 100,
       },
       paper: {
           width:'100%',
@@ -84,13 +84,9 @@ export default function FullWidthTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab icon={<FarmIcon />} label="Item One" {...a11yProps(0)} />
-          <Tab icon={<CommunityIcon />} label="Item Two" {...a11yProps(1)} />
+        className={classes.paper}  >
+          <Tab icon={<FarmIcon className={classes.icon} />} label="//Farming" {...a11yProps(0)} />
+          <Tab icon={<CommunityIcon className={classes.icon} />} label="//Community" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
