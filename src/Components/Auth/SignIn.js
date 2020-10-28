@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import { useFirebase } from "react-redux-firebase";
-import { useHistory } from "react-router-dom";
-
-
-
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import '../../config/fbConfig'
-import {useAuthState} from 'react-firebase-hooks/auth'
-import {useCollectionData} from 'react-firebase-hooks/firestore'
 
+import BasicButtonGreen from '../Common/BasicButtonGreen'
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
@@ -49,7 +43,7 @@ class SignIn extends Component {
     render() {
         return (
             <div className="container">
-                <button onClick={this.signInWithGoogle} className="btn pink lighten-1 z-depth-0">Sign In</button>
+                <BasicButtonGreen onClick={this.signInWithGoogle}>Sign In</BasicButtonGreen>
             </div>
         )
     }
