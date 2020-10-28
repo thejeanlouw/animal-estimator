@@ -85,8 +85,8 @@ export default function FullWidthTabs() {
           value={value}
           onChange={handleChange}
         className={classes.paper}  >
-          <Tab icon={<FarmIcon className={classes.icon} />} label="//Farming" {...a11yProps(0)} />
-          <Tab icon={<CommunityIcon className={classes.icon} />} label="//Community" {...a11yProps(1)} />
+          <Tab icon={<FarmIcon className={classes.icon} homeURL='#'/>} label="//Farming" {...a11yProps(0)} />
+          <Tab icon={<CommunityIcon className={classes.icon} homeURL='#'/>} label="//Community" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
