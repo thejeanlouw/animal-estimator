@@ -22,7 +22,7 @@ export default props => {
           <Route exact path='/annml-farm'><Dashboard  auth={props.auth} store={props.firestore} /></Route> */}
           
         <Route exact path='/'>{user ? <Dashboard  auth={props.auth} store={props.firestore} /> : <LoginPage  auth={props.auth} store={props.firestore} />}</Route>
-
+        <Route exact path='/annml-farm'><Dashboard  auth={props.auth} store={props.firestore} /></Route>
           <Route path='/farm/:id' component={FarmDetails} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
