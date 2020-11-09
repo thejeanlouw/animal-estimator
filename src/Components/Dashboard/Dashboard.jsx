@@ -7,8 +7,8 @@ import FullWidthTabs from '../Layout/Tabs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: window.innerWidth,
-    height: window.innerHeight,
+    // width: window.innerWidth,
+    // height: window.innerHeight,
     background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
     justifyContent: 'center'
   },
@@ -28,7 +28,7 @@ const Dashboard =props=>{
         const classes = useStyles();
         return(
             <div className={classes.root}>
-                <FullWidthTabs/>
+                <FullWidthTabs auth={props.auth} store={props.store}/>
                
                 <BottomDrawer></BottomDrawer>
         </div>

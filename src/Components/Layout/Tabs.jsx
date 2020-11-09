@@ -12,6 +12,7 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import FarmIcon from '../Common/farmIcon'
 import CommunityIcon from '../Common/communityIcon'
+import BottomDrawer from '../Layout/BottomDrawer';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,8 +50,8 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: window.innerWidth,
-        height: window.innerHeight,
+        // width: window.innerWidth,
+        // height: window.innerHeight,
         background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
         justifyContent: 'center'
       },
