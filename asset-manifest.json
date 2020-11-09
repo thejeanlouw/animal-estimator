@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/annml-farm/static/js/main.9694bf9d.chunk.js",
-    "main.js.map": "/annml-farm/static/js/main.9694bf9d.chunk.js.map",
+    "main.js": "/annml-farm/static/js/main.f20dcf86.chunk.js",
+    "main.js.map": "/annml-farm/static/js/main.f20dcf86.chunk.js.map",
     "runtime-main.js": "/annml-farm/static/js/runtime-main.22fac724.js",
     "runtime-main.js.map": "/annml-farm/static/js/runtime-main.22fac724.js.map",
     "static/js/2.89d1648b.chunk.js": "/annml-farm/static/js/2.89d1648b.chunk.js",
     "static/js/2.89d1648b.chunk.js.map": "/annml-farm/static/js/2.89d1648b.chunk.js.map",
     "index.html": "/annml-farm/index.html",
-    "precache-manifest.6abf90d50c699f2614c21d6ab773c2d2.js": "/annml-farm/precache-manifest.6abf90d50c699f2614c21d6ab773c2d2.js",
+    "precache-manifest.5762f9c2a5879b06f2f6aa80fffe0330.js": "/annml-farm/precache-manifest.5762f9c2a5879b06f2f6aa80fffe0330.js",
     "service-worker.js": "/annml-farm/service-worker.js",
     "static/js/2.89d1648b.chunk.js.LICENSE.txt": "/annml-farm/static/js/2.89d1648b.chunk.js.LICENSE.txt",
     "static/media/Logo.png": "/annml-farm/static/media/Logo.e962ae3a.png",
@@ -17,6 +17,6 @@
   "entrypoints": [
     "static/js/runtime-main.22fac724.js",
     "static/js/2.89d1648b.chunk.js",
-    "static/js/main.9694bf9d.chunk.js"
+    "static/js/main.f20dcf86.chunk.js"
   ]
 }
