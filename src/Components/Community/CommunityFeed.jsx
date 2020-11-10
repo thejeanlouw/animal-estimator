@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard =props=>{
+const CommunityFeed =props=>{
         debugger;
         const classes = useStyles();
         return(
@@ -60,4 +60,4 @@ const Dashboard =props=>{
 }
 
 
-export default Dashboard
+export default CommunityFeed

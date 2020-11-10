@@ -7,12 +7,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
+
+
 import FarmIcon from '../Common/farmIcon'
 import CommunityIcon from '../Common/communityIcon'
-import BottomDrawer from '../Layout/BottomDrawer';
+import BottomDrawer from './BottomDrawer';
+import Dashboard from '../Dashboard/Dashboard';
+import CommunityFeed from '../Community/CommunityFeed';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,8 +51,6 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // width: window.innerWidth,
-        // height: window.innerHeight,
         background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
         justifyContent: 'center'
       },
@@ -66,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
       },
 }));
 
-export default function FullWidthTabs() {
+export default function HomeTabs(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -81,7 +80,7 @@ export default function FullWidthTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default" height="100%">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -96,39 +95,13 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-        <Grid container spacing={1}>
-                <Grid item xs={12}>
-                    {/* <Card xs={5} className={classes.paper}>
-                    <CommunityIcon className={classes.icon}/>
-                    </Card>
-                    <Card  xs={5} className={classes.paper}>
-                    <FarmIcon className={classes.icon}/>
-                    </Card> */}
-                </Grid>
-                <Grid item xs={6}>
-                <Paper className={classes.paper}>xs=6</Paper>
-                </Grid>
-                <Grid item xs={6}>
-                <Paper className={classes.paper}>xs=6</Paper>
-                </Grid>
-                <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-                </Grid>
-                <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-                </Grid>
-                <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-                </Grid>
-                <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-                </Grid>
-            </Grid>
+          <Dashboard auth={props.auth} store={props.store} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          <CommunityFeed auth={props.auth} store={props.store} />
         </TabPanel>
       </SwipeableViews>
+      <BottomDrawer></BottomDrawer>
     </div>
   );
 }
