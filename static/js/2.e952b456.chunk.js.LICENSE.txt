@@ -34,6 +34,20 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
+/*! exports provided: default */
+
+/*! no static exports found */
+
+/*! react */
+
+/*!******************************!*\
+        !*** ./src/react-webcam.tsx ***!
+        \******************************/
+
+/*!**************************************************************************************!*\
+        !*** external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"} ***!
+        \**************************************************************************************/
+
 /**
   * @license
   * Copyright 2017 Google LLC
