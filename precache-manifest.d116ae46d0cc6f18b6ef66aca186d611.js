@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "97c0c0f231e9dd33f7742cd6f104863a",
+    "revision": "36e5bb3adf7ec66cf08a7bb512176764",
     "url": "/annml-farm/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/annml-farm/static/js/2.a7ef40c9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "00a042551a62d30f88d4",
-    "url": "/annml-farm/static/js/main.98f8710e.chunk.js"
+    "revision": "c2ad6ab8a0046e177d8f",
+    "url": "/annml-farm/static/js/main.2a1e9e4a.chunk.js"
   },
   {
     "revision": "5acb7531264a00f50cbd",
