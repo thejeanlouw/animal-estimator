@@ -1,15 +1,20 @@
 import React, {useState}  from 'react';
+import { withRouter } from 'react-router-dom';
 import Webcam from 'react-webcam'
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import NewFarm from '../Farm/NewFarm'
 
 const videoConstraints = {
-    width: 1280,
-    height: 720,
-    facingMode: 'user'
+    width: 800,
+    height: 800
 }
 
 
 
-export default function CaptureScreen(props) {
+function CaptureScreen(props) {
     
     const [imageData, setImageData] = useState(null);
     const [imageName, setImageName] = useState('');
@@ -72,28 +77,46 @@ export default function CaptureScreen(props) {
     }
 
     return (
-        <div>
-            <Webcam
-            audio={false}
-            width={350}
-            height={350}
-            ref={setRef}
-            screenshotFormat='image/jpeg'
-            videoConstraints={videoConstraints}
-            />
-            <div className='button-container'><button onClick={capture}>Save Image</button></div> 
+        <Card>
+            <div>
+                <Webcam
+                audio={false}
+                width={window.innerHeight/2}
+                height={window.innerHeight/2}
+                ref={setRef}
+                screenshotFormat='image/jpeg'
+                videoConstraints={videoConstraints}
+                />
+            </div>
+            <Button color='primary' onClick={capture}>Capture</Button> 
             {imageData?
+                // <div>
+                //     <p><img src={imageData} alt={imageName}/></p>
+                //     <span><button onClick={onClickRetake}>Retake</button></span>
+                //     <span><button onClick={onClickSave}>Save</button></span>
+                //     {
+                //         saveImage? saveForm() : null
+                //     }
+                // </div>
                 <div>
-                    <p><img src={imageData} alt={imageName}/></p>
-                    <span><button onClick={onClickRetake}>Retake</button></span>
-                    <span><button onClick={onClickSave}>Save</button></span>
-                    {
-                        saveImage? saveForm() : null
-                    }
+                    <CardContent>
+                        <NewFarm />
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small" color="primary">
+                            Save
+                        </Button>
+                        <Button size="small" color="primary">
+                            Cancel
+                        </Button>
+                    </CardActions>
                 </div>
                 :null
             }
-        </div>
+            
+        </Card>
     )
 
 }
+
+export default withRouter(CaptureScreen);

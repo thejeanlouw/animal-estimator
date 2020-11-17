@@ -29,7 +29,7 @@ function TabPanel(props) {
       {value === index && (
         <Box p={3}>
            {props.image? <props.image /> : null}
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -52,9 +52,11 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
     root: {
         background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        height: '90vh'
       },
       icon: {
+        background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
         width: 100,
         height: 100,
       },
@@ -63,6 +65,12 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         background: '#3C4142',
       },
+      bottombar: {
+        height: '10vh',
+        position: 'absolute',
+        bottom: 0,
+        verticalAlign: 'text-bottom'
+      }
 }));
 
 export default function HomeTabs(props) {
@@ -79,6 +87,7 @@ export default function HomeTabs(props) {
   };
 
   return (
+    <div>
     <div className={classes.root}>
       <AppBar position="static" color="default" height="100%">
         <Tabs
@@ -101,7 +110,9 @@ export default function HomeTabs(props) {
           <CommunityFeed auth={props.auth} store={props.store} />
         </TabPanel>
       </SwipeableViews>
-      <BottomDrawer></BottomDrawer>
+    </div>
+    
+    <BottomDrawer className={classes.bottombar}></BottomDrawer>
     </div>
   );
 }

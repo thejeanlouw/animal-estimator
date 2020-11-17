@@ -3,6 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import CaptureScreen from './CaptureScreen'
+import CenterFocusStrongRounded from '@material-ui/icons/CenterFocusStrongRounded';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -18,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CaptureModal(props) {
+export const CaptureModalButton = (props)=> {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -48,12 +53,49 @@ export default function CaptureModal(props) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p>
-          </div>
+          <CaptureScreen />
         </Fade>
       </Modal>
     </div>
   );
 }
+
+export const CaptureModalListItem = (props)=> {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      
+      <ListItem button key='Details' onClick={handleOpen}>
+              <ListItemIcon><CenterFocusStrongRounded /></ListItemIcon>
+              <ListItemText primary='Capture Details' />
+      </ListItem>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <CaptureScreen />
+        </Fade>
+      </Modal>
+    </div>
+  );
+}
+
+

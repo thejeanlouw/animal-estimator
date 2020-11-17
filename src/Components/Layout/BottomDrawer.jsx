@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -10,7 +11,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import CenterFocusStrongRounded from '@material-ui/icons/CenterFocusStrongRounded';
-import MailIcon from '@material-ui/icons/Mail';
+import SettingsApplicationsRounded from '@material-ui/icons/SettingsApplicationsRounded';
+import {CaptureModalListItem} from '../Capture/CaptureModal'
 
 const useStyles = makeStyles({
   list: {
@@ -30,6 +32,8 @@ export default function BottomDrawer() {
     right: false,
   });
 
+  const [drawerDisabled, setDrawerDisabled] = React.useState(false);
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -44,23 +48,21 @@ export default function BottomDrawer() {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-      <ListItem button onClick={()=>{console.log('click')}} key='capture'>
-            <ListItemIcon><CenterFocusStrongRounded /></ListItemIcon>
-            <ListItemText primary='Capture Details' />
-          </ListItem>
+      <CaptureModalListItem />
       </List>
       <Divider />
+      
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button key='inbox'>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary='Inbox' />
+        </ListItem>
+        <ListItem button key='settings'>
+              <ListItemIcon><SettingsApplicationsRounded /></ListItemIcon>
+              <ListItemText primary='Settings' />
+        </ListItem>
       </List>
     </div>
   );
@@ -69,7 +71,7 @@ export default function BottomDrawer() {
     <div>
       {['bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>More</Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
