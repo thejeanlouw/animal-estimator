@@ -53,7 +53,7 @@ export const CaptureModalButton = (props)=> {
         }}
       >
         <Fade in={open}>
-          <CaptureScreen />
+          <CaptureScreen auth={props.auth} store={props.store}/>
         </Fade>
       </Modal>
     </div>
@@ -91,7 +91,7 @@ export const CaptureModalListItem = (props)=> {
         }}
       >
         <Fade in={open}>
-          <CaptureScreen />
+          <CaptureScreen auth={props.auth} store={props.store}/>
         </Fade>
       </Modal>
     </div>

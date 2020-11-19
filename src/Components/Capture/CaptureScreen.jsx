@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import NewFarm from '../Farm/NewFarm'
+import UpdateAnimal from '../Animal/UpdateAnimal'
 
 const videoConstraints = {
     width: 800,
@@ -39,6 +39,10 @@ function CaptureScreen(props) {
     const onClickSave = (e) =>{
         e.persist();
         setSaveImage(!saveImage);
+    }
+
+    const upload = (e) => {
+        debugger;
     }
     
     const handleChange = (e) =>{
@@ -76,17 +80,7 @@ function CaptureScreen(props) {
 
     return (
         <Card>
-            <div>
-                <Webcam
-                audio={false}
-                width={window.innerHeight/2}
-                height={window.innerHeight/2}
-                ref={setRef}
-                screenshotFormat='image/jpeg'
-                videoConstraints={videoConstraints}
-                />
-            </div>
-            <Button color='primary' onClick={capture}>Capture</Button> 
+            
             {imageData?
                 // <div>
                 //     <p><img src={imageData} alt={imageName}/></p>
@@ -98,18 +92,22 @@ function CaptureScreen(props) {
                 // </div>
                 <div>
                     <CardContent>
-                        <NewFarm />
+                        <UpdateAnimal animalImage={imageData} store={props.store} auth={props.auth}/>
                     </CardContent>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Save
-                        </Button>
-                        <Button size="small" color="primary">
-                            Cancel
-                        </Button>
-                    </CardActions>
                 </div>
-                :null
+                :<div>
+                    <div>
+                        <Webcam
+                        audio={false}
+                        width={window.innerHeight/2}
+                        height={window.innerHeight/2}
+                        ref={setRef}
+                        screenshotFormat='image/jpeg'
+                        videoConstraints={videoConstraints}
+                        />
+                    </div>
+                <Button color='primary' onClick={capture}>Capture</Button> 
+                </div>
             }
             
         </Card>

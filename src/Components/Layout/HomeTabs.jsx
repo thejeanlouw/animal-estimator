@@ -111,7 +111,7 @@ export default function HomeTabs(props) {
       </SwipeableViews>
     </div>
     
-    <BottomDrawer className={classes.bottombar}></BottomDrawer>
+    <BottomDrawer className={classes.bottombar} auth={props.auth} store={props.store}></BottomDrawer>
     </div>
   );
 }

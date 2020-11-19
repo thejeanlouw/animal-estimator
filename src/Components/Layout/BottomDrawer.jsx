@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BottomDrawer() {
+export default function BottomDrawer(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -50,7 +50,7 @@ export default function BottomDrawer() {
       role="presentation"
     >
       <List>
-      <CaptureModalListItem />
+      <CaptureModalListItem auth={props.auth} store={props.store}/>
       </List>
       <Divider />
       
