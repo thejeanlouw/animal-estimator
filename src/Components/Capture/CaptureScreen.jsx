@@ -28,7 +28,6 @@ function CaptureScreen(props) {
     const capture = () => {
         const imageSrc = webcam.getScreenshot();
         setImageData(imageSrc);
-        debugger;
     }
     
     const onClickRetake = (e) =>{
@@ -53,7 +52,6 @@ function CaptureScreen(props) {
             image_name: imageName,
             image_data: imageData
         };
-        debugger;
         //save
     }
     

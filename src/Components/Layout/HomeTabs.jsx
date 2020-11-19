@@ -56,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
         height: '90vh'
       },
       icon: {
-        background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
         width: 100,
         height: 100,
       },

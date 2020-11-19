@@ -4,7 +4,6 @@ export const createFarm = (farm) => {
     return (dispatch, getState, {firebase, getFirestore}) => {
         // make async call
         const fireStore = firebase.fireStore;
-        debugger;
         fireStore.collection('farms').add({
             ...farm,
             farmFounderFirstName: 'Jean',

@@ -4,7 +4,6 @@ import SignOut from '../Auth/SignOut'
 
 const SignedInLinks = (props) =>
 {
-    debugger;
     return(
         <ul className="right">
             <li><NavLink to='/newfarm'>New Farm</NavLink></li>

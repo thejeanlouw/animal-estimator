@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter auth={auth}>
       <div className="App">
-        <Routes auth={auth} firestore={firestore} />
+        <Routes auth={auth} store={firestore} />
       </div>
     </BrowserRouter>
   );

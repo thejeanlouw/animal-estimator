@@ -19,10 +19,8 @@ class SignIn extends Component {
     // history = useHistory();
 
     signInWithGoogle = () => {
-        debugger;
         const provider = new firebase.auth.GoogleAuthProvider();
         this.props.auth.signInWithPopup(provider).then(()=>{
-            debugger;
         })
     }
 

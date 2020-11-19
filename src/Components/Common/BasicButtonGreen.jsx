@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button'
 import basicButtonGreen from '../../Style/Common/basicButtonGreen'
 
 const BasicButtonGreen = (props) => {
-    debugger;
     return(
             <Button variant="contained" color="secondary" onClick={props.onClick}
             style={basicButtonGreen}>{props.children}</Button>

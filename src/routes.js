@@ -13,7 +13,6 @@ import {useAuthState, } from 'react-firebase-hooks/auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 
 export default props => {
-
   const [user] = useAuthState(props.auth);
     return (
         <Switch>
