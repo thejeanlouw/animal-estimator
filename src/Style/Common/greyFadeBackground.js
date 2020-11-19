@@ -6,7 +6,8 @@ import Container from '@material-ui/core/Container';
 
 const greyFadeBackground = {
     background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    height: '100vh'
 }
 
 export default greyFadeBackground;

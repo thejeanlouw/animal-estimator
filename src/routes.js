@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, HashRouter, Switch } from 'react-router-dom'
+import { Route, HashRouter, Switch, Redirect } from 'react-router-dom'
 
 import HomeTabs from './Components/Layout/HomeTabs' 
 import CaptureScreen from './Components/Capture/CaptureScreen' 
@@ -20,7 +20,7 @@ export default props => {
           <Route exact path='/annml-farm'><Dashboard  auth={props.auth} store={props.firestore} /></Route> */}
           
         <Route exact path='/'>{user ? <HomeTabs  auth={props.auth} store={props.store} /> : <LoginPage  auth={props.auth} store={props.store} />}</Route>
-        <Route exact path='/annml-farm'><HomeTabs  auth={props.auth} store={props.store} /></Route>
+        <Route exact path='/annml-farm'><Redirect to="/" /></Route>
           <Route path='/farm/:id' component={FarmDetails} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
