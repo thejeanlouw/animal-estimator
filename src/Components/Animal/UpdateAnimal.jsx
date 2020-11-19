@@ -66,7 +66,7 @@ const UpdateAnimal = (props) =>
         const {uid,photoURL}= props.auth.currentUser;
         await updatesRef.add({
             age: getAge,
-            weight: getAge,
+            weight: getWeight,
             other: getOther,
             savedOn: firebase.firestore.FieldValue.serverTimestamp(),
             animalImage,

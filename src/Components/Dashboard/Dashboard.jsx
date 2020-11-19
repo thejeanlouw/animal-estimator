@@ -1,5 +1,5 @@
 import React from 'react'
-import firebase from 'firebase/app'
+import firebase, { firestore } from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import {useAuthState, } from 'react-firebase-hooks/auth'
@@ -36,24 +36,31 @@ const Dashboard =props=>{
   const query = updatesRef.orderBy('savedOn', "desc").limit(5)
   const [updates] = useCollectionData(query, {idField:'id'});
   const updatesInOrder = updates ? updates.reverse() : updates;
-  const animalImage = props.animalImage;
-  const [getDone, setDone] = React.useState(false);
-  const [getAge, setAge] = React.useState(0);
-  const [getWeight, setWeight] = React.useState(0);
-  const [getOther, setOther] = React.useState('');
 
+  const deleteCard = async(animal) =>
+  {
+    let deleteRefDoc = await updatesRef.doc(animal.id).get().then(x=>{
+      x.ref.delete();
+    });
+  }
 
-    return(
-      <div className={classes.root}>
-      {updates? updates.map(upd => <AnimalCard key={upd.id} animal={upd} useruid={user.uid}/>) : null}
-      </div>
-    )
+  return(
+    <div className={classes.root}>
+    {updates? updatesInOrder.map(upd => <AnimalCard key={upd.id} animal={upd} useruid={user.uid} deleteAnimal={deleteCard}/>) : null}
+    </div>
+  )
 }
 
 
 export const AnimalCard = (props) =>{
-  
+  debugger;
   const classes = useStyles();
+
+  const deleteUpdate = () =>
+  {
+    props.deleteAnimal(props.animal);
+  }
+
   return(
     <Card className={classes.paper}>
       <div>
@@ -70,6 +77,11 @@ export const AnimalCard = (props) =>{
           Other: {props.animal.other}
         </div>
       </CardContent>
+      {(props.animal.uid === props.useruid)?
+      <CardActions>
+        <Button color="secondary" onClick={deleteUpdate}>Delete</Button>
+      </CardActions>
+      :null}
     </Card>
   )
 

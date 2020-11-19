@@ -127,7 +127,6 @@ const Notifications = (props) =>
             uid,photoURL
         })
         } catch(e){
-            debugger;
             alert(`\"${formValue}\" could not be written. Please log in.`)
             if(e) {
                 alert(`${e.message}`)
