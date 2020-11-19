@@ -35,7 +35,6 @@ import SendIcon from '@material-ui/icons/Send';
 
 const useStyles = makeStyles((theme) => ({
     table: {
-        minWidth: 650,
         background: '#3C4142',
         color: 'white',
     },
@@ -61,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
         padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        width: 400,
         background: '#3C4142',
         color: 'white',
     },
@@ -116,9 +114,9 @@ const Notifications = (props) =>
     const classes = useStyles();
     const [user] = useAuthState(props.auth);
     const notificationRef = props.store.collection('notifications');
-    const query = notificationRef.orderBy('SentAt', "desc").limit(5);
+    const query = notificationRef.orderBy('SentAt', "desc").limit(5)
     const [notifications] = useCollectionData(query, {idField:'id'});
-    
+    const notificationsInOrder = notifications ? notifications.reverse() : notifications;
     const [formValue, setFormValue] = useState('');
     
     const [formInput, setFormInput] = useState(null);
@@ -180,7 +178,7 @@ const Notifications = (props) =>
                 </Grid>
                 <Grid item xs={9}>
                     <List className={classes.messageArea}>
-                        {user && notifications && notifications.reverse().map(msg => <Notification key={msg.id} message={msg} useruid={user.uid}/>)}
+                        {user && notifications && notifications.map(msg => <Notification key={msg.id} message={msg} useruid={user.uid}/>)}
                     </List>
                     <Divider />
                     <form onSubmit={sendNotification}>
