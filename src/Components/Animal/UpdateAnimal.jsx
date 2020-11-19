@@ -46,12 +46,12 @@ const UpdateAnimal = (props) =>
 
     const handleAgeChange = (e) =>
     {
-        setAge(e.currentTarget.value);
+        setAge(e.target.value);
     }
 
     const handleWeightChange = (e) =>
     {
-        setWeight(e.currentTarget.value);
+        setWeight(e.target.value);
     }
 
     const handleOther = (e) =>

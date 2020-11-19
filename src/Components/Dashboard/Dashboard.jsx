@@ -14,7 +14,6 @@ import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: 'linear-gradient(180deg, #3C4142 0%, #5F6769 100%)',
     justifyContent: 'center',
     maxHeight:'80vh'
   },
@@ -23,26 +22,57 @@ const useStyles = makeStyles((theme) => ({
     height: 150,
   },
   paper: {
-      width:'100%',
+    maxWidth:300,
     color: 'white',
     background: '#3C4142',
+    maxHeight: 300
   },
 }));
 
 const Dashboard =props=>{
-    const classes = useStyles();
-    const [user] = useAuthState(props.auth);
-    const updatesRef = props.store.collection('updates');
-    const query = updatesRef.orderBy('savedOn', "desc").limit(5)
-    const [updates] = useCollectionData(query, {idField:'id'});
-    const updatesInOrder = updates ? updates.reverse() : updates;
+  const classes = useStyles();
+  const [user] = useAuthState(props.auth);
+  const updatesRef = props.store.collection('updates');
+  const query = updatesRef.orderBy('savedOn', "desc").limit(5)
+  const [updates] = useCollectionData(query, {idField:'id'});
+  const updatesInOrder = updates ? updates.reverse() : updates;
+  const animalImage = props.animalImage;
+  const [getDone, setDone] = React.useState(false);
+  const [getAge, setAge] = React.useState(0);
+  const [getWeight, setWeight] = React.useState(0);
+  const [getOther, setOther] = React.useState('');
+
 
     return(
       <div className={classes.root}>
-      
+      {updates? updates.map(upd => <AnimalCard key={upd.id} animal={upd} useruid={user.uid}/>) : null}
       </div>
     )
 }
 
+
+export const AnimalCard = (props) =>{
+  
+  const classes = useStyles();
+  return(
+    <Card className={classes.paper}>
+      <div>
+        <img src={props.animal.animalImage} height={100}/>
+      </div>
+      <CardContent>
+        <div>
+          Age: {props.animal.age}
+        </div>
+        <div>
+          Weight: {props.animal.weight}
+        </div>
+        <div>
+          Other: {props.animal.other}
+        </div>
+      </CardContent>
+    </Card>
+  )
+
+}
 
 export default Dashboard
